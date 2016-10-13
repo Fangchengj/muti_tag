@@ -1,0 +1,27 @@
+<%= form_for(tag_two) do |f| %>
+  <% if tag_two.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag_two.errors.count, "error") %> prohibited this tag_two from being saved:</h2>
+
+      <ul>
+      <% tag_two.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_one_id %>
+    <%= f.collection_select(:tag_one_id, TagOne.all, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

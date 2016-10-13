@@ -1,0 +1,1 @@
+json.partial! "tag_ones/tag_one", tag_one: @tag_one

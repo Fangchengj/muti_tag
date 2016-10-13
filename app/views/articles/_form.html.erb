@@ -1,0 +1,33 @@
+<%= form_for(article) do |f| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_one_id %>
+    <%= f.collection_select(:tag_one_id, @tag_ones, :id, :name, prompt: "请选择第一个标签")%>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_two_id %>
+    <%= f.grouped_collection_select(:tag_two_id, @tag_ones, :tag_twos, :name, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
